@@ -60,6 +60,36 @@ async def ballad(req: Request, db: Session = Depends(get_db)):
         print(f'▷▷▷ ballad_list 오류발생 : {str(ex)}')
         return RedirectResponse(url='/member/error', status_code=303)
 
+# 장르 - rock
+@music_router.get('/rock')
+async def rock(req: Request, db: Session = Depends(get_db)):
+    try:
+        mlist = MusicService.get_music_genre(db, 'rock')
+        return templates.TemplateResponse('/music/rock.html', {'request': req, 'mlist': mlist})
+    except Exception as ex:
+        print(f'▷▷▷ ballad_list 오류발생 : {str(ex)}')
+        return RedirectResponse(url='/member/error', status_code=303)
+
+# 장르 - ost
+@music_router.get('/ost')
+async def ost(req: Request, db: Session = Depends(get_db)):
+    try:
+        mlist = MusicService.get_music_genre(db, 'ost')
+        return templates.TemplateResponse('/music/ost.html', {'request': req, 'mlist': mlist})
+    except Exception as ex:
+        print(f'▷▷▷ ballad_list 오류발생 : {str(ex)}')
+        return RedirectResponse(url='/member/error', status_code=303)
+
+# 장르 - r&b
+@music_router.get('/rnb')
+async def rnb(req: Request, db: Session = Depends(get_db)):
+    try:
+        mlist = MusicService.get_music_genre(db, 'r&b')
+        return templates.TemplateResponse('/music/rnb.html', {'request': req, 'mlist': mlist})
+    except Exception as ex:
+        print(f'▷▷▷ ballad_list 오류발생 : {str(ex)}')
+        return RedirectResponse(url='/member/error', status_code=303)
+
 # 국가별 - kpop
 @music_router.get('/kpop')
 async def kpop(req: Request, db: Session = Depends(get_db)):
