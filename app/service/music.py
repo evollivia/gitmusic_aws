@@ -1,6 +1,6 @@
 import random
 
-from sqlalchemy import select, or_
+from sqlalchemy import select, or_ , func
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -15,7 +15,7 @@ class MusicService:
             items_per_page = 10
 
             # SQL 쿼리 작성
-            stmt = select(Music.mno,Music.singer, Music.title).limit(items_per_page)
+            stmt = select(Music.mno,Music.singer, Music.title).order_by(func.rand()).limit(items_per_page)
 
             # 쿼리 실행 및 결과 반환
             result = db.execute(stmt)

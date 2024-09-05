@@ -2,6 +2,51 @@
   main {
     margin: 110px 50px 0 150px;
     transition: margin 0.5s ease;
+      min-height: 1800px;
+  }
+
+  .section-title {
+      font-size: 1.5rem; /* 제목 폰트 크기 */
+      margin-bottom: 1rem; /* 제목 아래 여백 */
+  }
+
+  .section {
+      padding: 20px; /* 섹션 안쪽 여백 */
+      border-radius: 8px; /* 모서리 둥글게 */
+      background: linear-gradient(to right,#2b2f32 ,darkgray); /* 배경색 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+      margin-bottom: 20px; /* 섹션 간 여백 */
+  }
+
+  /**/
+  /* 화면이 970px 이하로 줄어들 때 적용될 스타일 */
+  @media (max-width: 970px) {
+      .music-list-item {
+          flex-direction: column; /* 세로 방향으로 항목 정렬 */
+          text-align: center; /* 텍스트 중앙 정렬 */
+          align-items: center; /* 모든 항목을 중앙으로 정렬 */
+          padding: 0; /* 여백 제거 */
+          border: none; /* 구분선 제거 (선택적) */
+      }
+
+      .music-list-item .col-2 {
+          width: 40%; /* 열의 너비를 전체 폭으로 설정 */
+          margin: 0; /* 마진 제거 */
+          padding: 0; /* 수직 패딩 추가 (선택적) */
+          box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 설정 */
+          justify-content: center; /* 열의 항목을 수평 중앙 정렬 */
+      }
+
+      .music-list-item img.mimg {
+          max-width: 100%; /* 이미지가 열의 너비를 넘지 않도록 설정 */
+          height: auto; /* 이미지 비율 유지 */
+      }
+
+      .music-list-item span,
+      .music-list-item button {
+          display: block; /* 버튼과 텍스트를 블록으로 변환하여 중앙 정렬 */
+          margin: 0 auto; /* 수평 중앙 정렬 */
+      }
   }
 
   #music-player {
@@ -38,7 +83,7 @@
     border-radius: 8px;
   }
 
-  .section .row {
+  .section {
     margin-top: -15px;
   }
 
@@ -119,8 +164,42 @@
     justify-content: flex-end;
     margin-bottom: 20px;
   }
+  /* 테이블 스타일 */
+  table tbody tr {
+      border-bottom: 1px solid silver;
+  }
+  table tbody tr:first-child {
+      border-top: none;
+  }
+  /*음악리스트 위치설정*/
+  .row {
+      display: flex;
+      justify-content: flex-start; /* 기본적으로 모든 자식을 왼쪽에 정렬 */
+  }
 
-  @media (max-width: 870px) {
+  .col-2 {
+      /* 기본 스타일 설정 */
+      flex: 1; /* 요소가 가능한 공간을 나누어 가지게 함 */
+      padding: 0 5px; /* 패딩을 추가하여 간격 조정 */
+      box-sizing: border-box; /* 패딩과 보더를 포함한 크기 설정 */
+  }
+
+  .col-2:nth-child(3) {
+      /* 3번 열 왼쪽 여백 설정 */
+      margin-left: 80px;
+  }
+
+  .col-2:nth-child(4) {
+      /* 4번 열 왼쪽 여백을 설정하고 오른쪽으로 정렬하기 위해 auto 마진을 추가 */
+      margin-left: auto;
+  }
+
+  .col-2:nth-child(5) {
+      /* 5번 열 왼쪽 여백을 설정하고 오른쪽으로 정렬하기 위해 auto 마진을 추가 */
+      margin-left: 1px; /* 4번 열과 5번 열 사이의 간격을 조정 */
+      margin-right: 0; /* 오른쪽 여백을 설정하여 필요시 조정 */
+  }
+  @media (max-width: 970px) {
     .music-actions,
     .top-buttons {
       flex-direction: column;
@@ -135,11 +214,21 @@
       min-width: 5px;
     }
   }
-  /* 테이블 스타일 */
-  table tbody tr {
-      border-bottom: 1px solid silver;
+  .col-2:nth-child(2) {
+      /* 970px 이하일 때 3번 열의 왼쪽 여백을 제거하고 중앙 정렬 */
+      min-width: 150px;
   }
-  table tbody tr:first-child {
-      border-top: none;
+  .col-2:nth-child(3) {
+      /* 970px 이하일 때 3번 열의 왼쪽 여백을 제거하고 중앙 정렬 */
+      margin-left: 0;
+      text-align: center;
+      min-width: 150px;
   }
+  .col-2:nth-child(4) {
+      /* 970px 이하일 때 4번 열의 마진을 제거 */
+      margin-left: 0;
+    }
+
+
+
 </style>
