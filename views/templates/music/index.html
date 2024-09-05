@@ -36,30 +36,62 @@
             </div>
         </div>
     </div>
+    <div class="mb-4 section" id="genre-music-section1">
+    <h5 class="section-title d-inline-block">장르별 음악</h5>
+    <!-- 컨테이너 안에서 버튼을 오른쪽으로 이동 -->
+    <button class="btn btn-primary float-end" onclick="showSection('genre-music-section2')">
+	   <i class="bi bi-arrow-right-circle"></i></button>
 
-    <div class="mb-4 section">
-        <h5 class="section-title">장르별 음악</h5>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h6>발라드</h6>
-                <a href="/music/ballad">
-                    <img src="/static/img/발라드.jpg" alt="발라드" class="img-fluid">
-                </a>
-            </div>
-            <div class="col-md-4 text-center">
-                <h6>댄스</h6>
-                <a href="/music/dance">
-                    <img src="/static/img/춤.jpg" alt="댄스" class="img-fluid">
-                </a>
-            </div>
-            <div class="col-md-4 text-center">
-                <h6>힙합</h6>
-                <a href="/music/hiphop">
-                    <img src="/static/img/힙합.jpg" alt="힙합" class="img-fluid">
-                </a>
-            </div>
+    <div class="row mt-3">
+        <div class="col-md-4 text-center">
+            <h6>발라드</h6>
+            <a href="/music/ballad">
+                <img src="/static/img/발라드.jpg" alt="발라드" class="img-fluid">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h6>댄스</h6>
+            <a href="/music/dance">
+                <img src="/static/img/춤.jpg" alt="댄스" class="img-fluid">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h6>힙합</h6>
+            <a href="/music/hiphop">
+                <img src="/static/img/힙합.jpg" alt="힙합" class="img-fluid">
+            </a>
         </div>
     </div>
+</div>
+
+<!-- 두 번째 섹션 -->
+<div class="mb-4 section" id="genre-music-section2" style="display: none;">
+    <h5 class="section-title d-inline-block">장르별 음악</h5>
+    <button class="btn btn-primary float-end" onclick="showSection('genre-music-section1')">
+   <i class="bi bi-arrow-right-circle"></i></button>
+
+    <div class="row mt-3">
+        <div class="col-md-4 text-center">
+            <h6>Rock</h6>
+            <a href="/music/rock">
+                <img src="/static/img/힙합.jpg" alt="Rock" class="img-fluid">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h6>OST</h6>
+            <a href="/music/ost">
+                <img src="/static/img/02.jpg" alt="OST" class="img-fluid">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <h6>R&B</h6>
+            <a href="/music/rnb">
+                <img src="/static/img/03.jpg" alt="R&B" class="img-fluid">
+            </a>
+        </div>
+    </div>
+</div>
+
 
     <!-- 추천 10곡  -->
     <div class="container mt-5">
@@ -111,6 +143,14 @@
     <audio id="audio-player" controls></audio>
 </div>
 
+<script>
+  // 섹션을 보여주고 숨기는 함수
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('#genre-music-section1, #genre-music-section2');
+    sections.forEach(section => section.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
+  }	
+</script>
 <script>
     let audioPlayer = document.getElementById('audio-player');
     let musicPlayer = document.getElementById('music-player');
