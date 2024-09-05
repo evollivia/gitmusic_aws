@@ -230,5 +230,21 @@
     }
 
 
+.row header{ display: flex;
+    flex-wrap: wrap; /* 열이 여러 줄로 나누어질 수 있도록 설정 */
+    gap: 1rem; /* 열 사이의 기본 간격 설정 */
+    align-items: center; /* 수직 정렬을 중앙으로 설정 */}
+  @media (max-width: 970px) {
+      .row header {
+          flex-direction: column; /* 열을 수직으로 쌓이도록 설정 */
+          gap: 0.5rem; /* 열 사이의 간격을 줄임 */
+      }
 
+      .col-2 {
+          flex: 1 1 100%; /* 각 열이 전체 너비를 차지하도록 설정 */
+          text-align: center; /* 텍스트를 중앙으로 정렬 */
+          padding: 0.5rem; /* 각 열에 패딩 추가 (선택 사항) */
+          box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 설정 */
+      }
+  }
 </style>
