@@ -112,7 +112,7 @@ class BoardService:
             stmt = select(Board).outerjoin(Board.replys) \
                 .options(contains_eager(Board.replys)) \
                 .where(Board.bno == bno) \
-                .order_by(Reply.rpno)
+                .order_by(Reply.rpno, Reply.regdate)
 
             result = db.execute(stmt)
             db.commit()
@@ -135,12 +135,15 @@ class BoardService:
     @staticmethod
     def insert_reply(db, rp):
         try:
-            stmt = select(func.coalesce(func.max(Reply.rno), 0) + 1)
+            db.execute(text("SET FOREIGN_KEY_CHECKS = 0;"))
+            stmt=text("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ubuntu' AND TABLE_NAME ='reply';")
+            # stmt = select(func.coalesce(func.max(Reply.rno), 0) + 1)
             next_rno = db.execute(stmt).scalar_one()
             stmt = insert(Reply).values(userid=rp.userid, reply=rp.reply,
                                         bno=rp.bno, rpno=next_rno)
             result = db.execute(stmt)
             db.commit()
+            db.execute(text("SET FOREIGN_KEY_CHECKS = 1;"))
             return result
 
         except SQLAlchemyError as ex:
