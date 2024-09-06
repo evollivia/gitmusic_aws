@@ -6,29 +6,28 @@
     }
     .navbar-toggler {
         position: fixed;
-        top: 10px; /* 상단에서 10px 떨어지게 */
+        top: 16px; /* 상단에서 10px 떨어지게 */
         left: 10px; /* 좌측에서 10px 떨어지게 */
         z-index: 100; /* 항상 위에 표시되게 */
     }
     .sidebar {
         position: fixed;
-        top: 66px; /* 네비게이션 바 높이만큼 떨어지게 설정 */
+        top: 56px; /* 네비게이션 바 높이만큼 떨어지게 설정 */
         left: 0;
-        width: 190px;
-        height: calc(100vh - 66px); /* 화면 높이에서 네비게이션 바 높이만큼 제외 */
-        background-color: black;
-        border-right: 3px solid skyblue;
+        width: 200px;
+        height: calc(100vh - 56px); /* 화면 높이에서 네비게이션 바 높이만큼 제외 */
+        background-color: #4682B4;
+        border-right: 3px solid white;
         z-index: 30;
         transform: translateX(0); /* 사이드바가 항상 보이도록 기본 설정 */
         transition: transform 0.3s ease;
     }
     .sidebar.hidden {
-        transform: translateX(-180px); /* 사이드바가 숨겨져 있음 */
+        transform: translateX(-200px); /* 사이드바가 숨겨져 있음 */
     }
 </style>
-</head>
-<body>
-<nav class="navbar navbar-dark bg-black">
+
+<nav class="navbar navbar-dark #4682B4">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" id="sidebarToggle" aria-expanded="false" aria-label="Toggle sidebar">
             <span class="navbar-toggler-icon"></span>
@@ -73,11 +72,11 @@
     function handleResize() {
         var sidebar = document.getElementById('sidebar');
         var width = window.innerWidth;
-        if (width <= 870) {
-            // 화면이 870px 이하일 때 사이드바 숨기기
+        if (width <= 970) {
+            // 화면이 970px 이하일 때 사이드바 숨기기
             sidebar.classList.add('hidden');
         } else {
-            // 화면이 870px 이상일 때 사이드바 보이기
+            // 화면이 970px 이상일 때 사이드바 보이기
             sidebar.classList.remove('hidden');
         }
     }

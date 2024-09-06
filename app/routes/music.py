@@ -180,7 +180,7 @@ async def random_mvno(db: Session = Depends(get_db)):
 @music_router.get('/mp4play/{mvno}', response_class=HTMLResponse)
 async def mp4play(mvno: int, db: Session = Depends(get_db) ):
 
-    MV_PATH = '/home/data/mv'
+    MV_PATH = '/home/ubuntu/data/mv'
     mv_fname = MusicVideoService.selectone_file(db, mvno)
 
     file_path = os.path.join(MV_PATH, mv_fname)
@@ -196,7 +196,7 @@ async def mp4play(mvno: int, db: Session = Depends(get_db) ):
 @music_router.get('/mvcover/{mvno}', response_class=HTMLResponse)
 async def mvcover(mvno: int, db: Session = Depends(get_db) ):
 
-    IMAGE_PATH = '/home/data/mvimage'
+    IMAGE_PATH = '/home/ubuntu/data/mvimage'
     mv_image = MusicVideoService.selectone_mvimage(db, mvno)
 
     file_path = os.path.join(IMAGE_PATH, mv_image )
