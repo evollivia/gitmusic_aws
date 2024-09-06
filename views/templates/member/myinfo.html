@@ -9,33 +9,35 @@
 {% block style %}
 <style>
     body {
+        background: linear-gradient(to bottom, #87CEEB, #4682B4) fixed;
+        background-size: cover;
+        color: white;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        height: 100vh; /* Viewport Height 100% */
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
     }
 
     main {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - 50px);
+        height: 100%; /* Full height */
         width: 100%;
-        overflow-y: auto;
     }
 
     .signup-container {
         width: 100%;
         max-width: 500px;
-        background: linear-gradient(135deg, #795548 , #D7CCC8);
-        color: black;
+        background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        color: #333; /* Dark text color for readability */
         padding: 40px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        font-weight: bold;
-        margin-left: -300px;
-
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly lighter shadow */
+        font-weight: normal; /* Adjust font weight for readability */
+        margin-right: 300px;
     }
 
     .pay-button {
@@ -61,11 +63,11 @@
         display: block;
         margin: 0 auto 20px;
     }
+
     .info-container .row div {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: -50px;
     }
 
     .info-container .row {
@@ -80,15 +82,25 @@
         border-bottom: none; /* Remove border from the last item */
     }
 
+    /* Responsive adjustments */
+    @media (max-width: 870px) {
+        #search {
+            margin-left: 60px; /* Adjust for mobile view */
+        }
+    }
+    @media (max-width: 1000px) {
+        .signup-container{
+            margin:100px 100px 0 0;
+        }
+    }
 </style>
 {% endblock %}
 
 {% block main %}
-<main class="d-flex justify-content-center align-items-center vh-100">
+<main>
     <div class="signup-container text-center">
         {% if myinfo %}
         <form name="joinfrm" id="joinfrm">
-
             <div class="info-container mb-3">
                 <div class="mb-3 row">
                     <label for="userid" class="col-sm-4 col-form-label text-start">아이디</label>
